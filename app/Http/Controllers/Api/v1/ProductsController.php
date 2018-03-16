@@ -12,7 +12,6 @@ use App\Logics\Products\LikesLogic;
 use App\Http\Requests\Products\PagingRequest;
 use App\Http\Requests\Products\CreateRequest;
 use App\Http\Requests\Products\UpdateRequest;
-use App\Http\Requests\Products\DeleteRequest;
 
 class ProductsController extends Controller
 {

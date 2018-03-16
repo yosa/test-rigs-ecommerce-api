@@ -17,7 +17,7 @@ class BaseCreateLogic
     
     protected $repository;
     protected $idField = 'id';
-    protected $fieldIdIdentityCreated = 'idUser';
+    protected $fieldIdIdentityCreated = 'idUserCreated';
     protected $autoInyectIdentityCreated = true;
     protected $eventSuccess = '';
 

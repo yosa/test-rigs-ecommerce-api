@@ -15,7 +15,7 @@ class LikesLogic extends UpdateLogic
     public function save(&$input)
     {
         $result = $this->repository
-            ->where('id', $input['id'])
+            ->byId($input['id'])
             ->increment('likes');
         return $result === false ? false : true;
     }

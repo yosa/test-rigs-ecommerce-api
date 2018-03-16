@@ -6,6 +6,7 @@ Route::prefix('v1')->group(function() {
         Route::get('{id}', 'ProductsController@readById');
         Route::put('{id}', 'ProductsController@update');
         Route::put('{id}/likes', 'ProductsController@likes');
+        Route::put('{id}/buy/{quantity}', 'ShoppingController@create');
         Route::delete('{id}', 'ProductsController@delete');
     });
 });
