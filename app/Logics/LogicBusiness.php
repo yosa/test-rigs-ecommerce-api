@@ -2,8 +2,6 @@
 
 namespace App\Logics;
 
-use App\Events\Event;
-
 /**
  * 
  *
@@ -12,56 +10,24 @@ use App\Events\Event;
 trait LogicBusiness
 {
     
-    public function fireEvent($key, &$data = null)
-    {
-        $event = new Event($key, $data);
-        $result = event($event);
-        return $this->isEventRunSuccess($event, $result);
+    public function error($message, array $data = [])
+    {        
+        return app('messages')->error($message, $data);        
     }
     
-    public function isEventRunSuccess(&$event, &$result)
-    {
-        if( is_array($result)) {
-            foreach ($result as $r) {
-                if( is_bool($r) && !$r) {
-                    return false;
-                }
-            }
-            return $event;
-        }
-        
-        if( in_array(false, $result)) {
-            return false;
-        }
-        
-        return $event;
+    public function errorCode($code, array $data = [])
+    {        
+        return app('messages')->errorCode($code, $data);        
     }
     
-    public function isGod()
-    {
-        return app('isGod')->init();
+    public function debug($message, array $data = [])
+    {        
+        return app('messages')->debug($message, $data);        
     }
     
-    public function isAllowedContentModel($privilege, $statusCode, $idContentModel)
-    {
-        return app('gates')->init($privilege, $statusCode, $idContentModel);
-    }
-    
-    public function success($code, $data = [])
-    {
-        app('messages')->setStatusOk($code, $data);
-        return true;
-    }
-    
-    public function error($code, $data = [])
-    {
-        app('messages')->setStatusError($code, $data);
-        return false;
-    }
-    
-    public function info($code, $data = [])
-    {
-        return true;
+    public function info($message, array $data = [])
+    {        
+        return app('messages')->info($message, $data);        
     }
     
     public function getIdentity()

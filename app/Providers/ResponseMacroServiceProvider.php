@@ -17,67 +17,41 @@ class ResponseMacroServiceProvider extends ServiceProvider
     {
         $data = $this->addDefaultResult($value);        
         $this->addBenchMark($data);
-        
-        if( $value) {
-            $data ['data']= $value;
-        }
-        
-        $this->addStatus($data);
-        return $this->responseJson($data, 200);
+        $response = $this->addMessages($data);
+        return $this->responseJson($data, $response, 200);
     }
         
     public function responseCreate($value)
     {        
         $data = $this->addDefaultResult($value);        
-        
         $this->addBenchMark($data);
-
         if( $value) {
             $data ['data']= $value;
         }
-
-        return $this->responseJson($data, $value ? 201 : 422);        
+        $response = $this->addMessages($data);
+        return $this->responseJson($data, $response, $value ? 201 : 422);        
     }
     
     public function responseData($value, $status = 200)
     {
         $data = $this->addDefaultResult($value);        
-        
-        $this->addBenchMark($data);
-        
+        $this->addBenchMark($data);        
         if( $value) {
             $data ['data']= $value;
         }
-        
-        $this->addStatus($data);
-        
-        return $this->responseJson($data, $status);        
-    }
-    
-    public function responseDataNull($value, $status = 200)
-    {
-        $data = $this->addDefaultResult($value);        
-        
-        $this->addBenchMark($data);
-        
-        $data ['data']= $value;
-        
-        $this->addStatus($data);
-        
-        return $this->responseJson($data, $status);        
+        $response = $this->addMessages($data);
+        return $this->responseJson($value, $response, $status);        
     }
     
     public function responsePaging($value, $status = 200)
-    {        
+    {
         $data = $this->addDefaultResult($value);        
-        
-        $this->addBenchMark($data);
-        
+        $this->addBenchMark($data);        
         if( $value) {
             $data ['data']= $value;
         }
-
-        return $this->responseJson($data, $status);        
+        $response = $this->addMessages($data);
+        return $this->responseJson($data, $response, $status);        
     }
     
     public function boot()

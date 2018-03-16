@@ -25,12 +25,13 @@ class BaseDeleteLogic
     }
     
     public function run($id)
-    {        
+    {
         $this->repository->getConnection()->beginTransaction();
         
         if( !$this->exists($id)) {
-            $this->error($this->getErrorCodeDoesNotExist());
-            return $this->repository->getConnection()->rollBack();
+            $this->errorCode($this->getErrorCodeDoesNotExist());
+            $this->repository->getConnection()->rollBack();
+            return false;
         }
         
         $eventData = [];
@@ -53,7 +54,6 @@ class BaseDeleteLogic
         }
         
         $this->repository->getConnection()->commit();
-        $this->success($this->statusOk);
         return $this->getReturnData($id, $eventData, $event);
     }
     
@@ -66,7 +66,7 @@ class BaseDeleteLogic
     
     public function getReturnData(&$input, &$eventData, &$event)
     {
-        return $event->getData();
+        return true;
     }
     
     public function beforeSave(&$input, &$event)

@@ -39,7 +39,7 @@ trait ResponseTrait
         $this->responseSuccess($response);
         $json = json_decode($response->getContent());
         $this->assertTrue(isset($json->data));
-        $this->assertTrue(isset($json->data->record->id));
+        $this->assertTrue(isset($json->data->id));
         return $this;
     }
     

@@ -12,9 +12,10 @@ class CreateTest extends TestCase
     
     /**
      * @test
-     * @group dev
+     * @group completed
      * @group products
      * @group products.create
+     * @group create
      */
     public function invalid_input()
     {
@@ -58,6 +59,7 @@ class CreateTest extends TestCase
      * @group completed
      * @group products
      * @group products.create
+     * @group create
      */
     public function success()
     {
@@ -65,7 +67,7 @@ class CreateTest extends TestCase
         
         $response = $this
             ->withToken()
-            ->post($this->url, $input);
+            ->json('post', $this->url, $input);
         
         $this->responseSuccess($response)
             ->responseCreatedSuccess($response);

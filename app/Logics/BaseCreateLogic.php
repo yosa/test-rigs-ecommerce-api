@@ -89,9 +89,9 @@ class BaseCreateLogic
             return false;
         }
         
-        $eventData ['record']= $this->getRecord($idRecord);
+        $eventData = $this->getRecord($idRecord);
         
-        if( !$eventData['record']) {
+        if( !$eventData) {
             $this->error($this->getStatusError());
             $this->repository->getConnection()->rollBack();
             return false;

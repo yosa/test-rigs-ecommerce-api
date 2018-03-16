@@ -21,7 +21,8 @@ class PagingTest extends TestCase
     /**
      * @test
      * @group completed
-     * @group products
+     * @group products.paging
+     * @group paging
      */
     public function paging_limit()
     {
@@ -48,7 +49,8 @@ class PagingTest extends TestCase
     /**
      * @test
      * @group completed
-     * @group products
+     * @group products.paging
+     * @group paging
      */
     public function search()
     {
@@ -72,7 +74,8 @@ class PagingTest extends TestCase
     /**
      * @test
      * @group completed
-     * @group products
+     * @group products.paging
+     * @group paging
      */
     public function sortable_likes()
     {
@@ -97,7 +100,8 @@ class PagingTest extends TestCase
     /**
      * @test
      * @group completed
-     * @group products
+     * @group products.paging
+     * @group paging
      */
     public function sortable_name()
     {
@@ -123,7 +127,8 @@ class PagingTest extends TestCase
     /**
      * @test
      * @group completed
-     * @group products
+     * @group products.paging
+     * @group paging
      */
     public function paging()
     {

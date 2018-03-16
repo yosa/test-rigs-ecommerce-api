@@ -15,13 +15,9 @@ abstract class TestCase extends BaseTestCase
     
     public function getToken()
     {
-        static $token = null;
-        
-        if( !$token) {
-            $token = User::where('email', env('TEST_USER_EMAIL'))
-                ->first()
-                ->createToken('test');
-        }
+        $token = User::where('email', env('TEST_USER_EMAIL'))
+            ->first()
+            ->createToken('test');
         
         return $token->accessToken;
     }
