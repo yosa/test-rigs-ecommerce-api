@@ -24,6 +24,15 @@ trait ResponseTrait
         $this->assertTrue(isset($log->id));
         return $this;
     }
+    
+    public function withErrorCode(&$response, $errorCode)
+    {
+        $result = collect(json_decode($response->getContent())->errors)
+            ->where('code', $errorCode)
+            ->first();
+        $this->assertTrue($result->code === $errorCode);
+        return $this;
+    }
         
     public function responseWithErrors(&$response, $status = 400)
     {

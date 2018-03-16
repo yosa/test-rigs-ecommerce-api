@@ -4,11 +4,37 @@ namespace Tests\Feature\Products;
 
 use Tests\TestCase;
 use App\Models\Products;
+use App\Models\User;
 
 class CreateTest extends TestCase
 {
     
     protected $url = 'api/v1/products';
+    
+    /**
+     * @test
+     * @group completed
+     * @group products
+     * @group products.create
+     * @group create
+     */
+    public function no_admin_error()
+    {
+        /* change is not admin user test */
+        $user = $this->getUser();
+        User::where('id', $user->id)->update([
+            'isAdmin'=>false
+        ]);
+        
+        $input = factory(Products::class)->make()->toArray();
+        
+        $response = $this
+            ->withToken()
+            ->json('post', $this->url, $input);
+        
+        $this->responseWithErrors($response, 200)
+            ->withErrorCode($response, 'sec.2');
+    }
     
     /**
      * @test

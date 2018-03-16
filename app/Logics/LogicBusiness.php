@@ -30,9 +30,14 @@ trait LogicBusiness
         return app('messages')->info($message, $data);        
     }
     
+    public function getUser()
+    {
+        return request()->user();
+    }
+    
     public function getIdentity()
     {
-        $user = request()->user();
+        $user = $this->getUser();
         
         if( is_null($user)) {
             return $this->error('User Unauthenticated');

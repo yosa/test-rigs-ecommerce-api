@@ -13,10 +13,15 @@ abstract class TestCase extends BaseTestCase
     use ResponseTrait;
     use DatabaseTransactions;
     
+    public function getUser()
+    {
+        return User::where('email', env('TEST_USER_EMAIL'))
+            ->first();
+    }
+    
     public function getToken()
     {
-        $token = User::where('email', env('TEST_USER_EMAIL'))
-            ->first()
+        $token = $this->getUser()
             ->createToken('test');
         
         return $token->accessToken;

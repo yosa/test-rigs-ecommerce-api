@@ -18,4 +18,8 @@ return [
     /* logs */
     'log.1'=>'Imposible obtener el evento por su clave ({eventKey})',
     'log.2'=>'Imposible crear registro del evento {eventName} ({eventKey})',
+    
+    /* security */
+    'sec.1'=>'No autenticado',
+    'sec.2'=>'No cuenta con privilegios para realizar la acción ({gate})',
 ];

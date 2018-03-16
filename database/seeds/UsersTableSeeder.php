@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         $emailUser = env('TEST_USER_EMAIL'); 
         $userFake = factory(User::class)->make([
             'email'=>$emailUser,
+            'isAdmin'=>true
         ])->toArray();
         $userFake ['password']= bcrypt(env('TEST_USER_PASSWORD'));
         User::updateOrCreate([

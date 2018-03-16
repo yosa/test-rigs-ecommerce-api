@@ -8,5 +8,6 @@ $factory->define(User::class, function (Faker $faker) {
         'name'=>$faker->name,
         'email'=>$faker->unique()->safeEmail,
         'password'=>bcrypt($faker->word),
+        'isAdmin'=>$faker->boolean,
     ];
 });
