@@ -20,6 +20,13 @@ class Products extends Model
         'likes'
     ];
     
+    protected $casts = [
+        'stock'=>'integer',
+        'likes'=>'integer',
+        'price'=>'float',
+    ];
+
+
     public function scopeById($query, $id)
     {
         return $query->where('id', $id);

@@ -12,6 +12,8 @@ use App\Logics\Products\UpdateLogic;
 class LikesLogic extends UpdateLogic
 {
     
+    protected $eventSuccess = 'products.liked';
+    
     public function save(&$input)
     {
         $result = $this->repository

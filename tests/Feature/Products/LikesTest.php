@@ -28,24 +28,27 @@ class LikesTest extends TestCase
 
     /**
      * @test
-     * @group dev
+     * @group completed
      * @group products
      * @group products.likes
      * @group likes
      */
     public function success()
     {
+        $this->cleanLogs();
         $product = factory(Products::class)->create();
         
         $response = $this
             ->withToken()
             ->json('put', "{$this->url}/{$product->id}/likes");
         
-        $this->responseSuccess($response);
-        $this->assertDatabaseHas('products', [
+        $changes = [
             'id'=>$product->id,
             'likes'=>$product->likes + 1
-        ]);
+        ];
+        $this->responseSuccess($response)
+            ->eventInLog('products.liked', $changes);
+        $this->assertDatabaseHas('products', $changes);
     }
     
 }

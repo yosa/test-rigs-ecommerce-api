@@ -16,6 +16,7 @@ class CreateLogic extends BaseCreateLogic
     
     protected $repoProducts;
     protected $product;
+    protected $eventSuccess = 'products.purchased';
 
     public function __construct(
         Shopping $repository,
@@ -28,22 +29,22 @@ class CreateLogic extends BaseCreateLogic
     
     public function isValidInput(&$input)
     {
-        $product = $this->getProduct($input['idProduct']);
+        $this->product = $this->getProduct($input['idProduct']);
                 
-        if( !$product) {
+        if( !$this->product) {
             return false;
         }
         
-        if( !$this->inStock($product->stock, $input['quantity'])) {
+        if( !$this->inStock($input['quantity'])) {
             return false;
         }
         
         return true;
     }
     
-    public function inStock($stock, $quantity)
+    public function inStock($quantity)
     {
-        if( $stock - $quantity > 0) {
+        if( $this->product->stock - (int)$quantity > 0) {
             return true;
         }
         
@@ -58,7 +59,14 @@ class CreateLogic extends BaseCreateLogic
             return false;
         }
         
-        if( $this->updateStock($input['idProduct'], $input['quantity'])) {
+        $newStock = $this->product->stock - (int)$input['quantity'];
+        $this->info('stock: {s}, purchased: {q}, new stock: {n}', [
+            's'=>$this->product->stock,
+            'q'=>$input['quantity'],
+            'n'=>$newStock,
+        ]);
+        
+        if( $this->updateStock($input['idProduct'], $newStock)) {
             return $result;
         }
         

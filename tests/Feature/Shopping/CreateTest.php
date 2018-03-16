@@ -19,6 +19,7 @@ class CreateTest extends TestCase
      */
     public function success()
     {
+        $this->cleanLogs();
         $product = factory(Products::class)->create();
         $quantity = rand(1, $product->stock ? $product->stock : 1);
         
@@ -27,7 +28,11 @@ class CreateTest extends TestCase
             ->json('put', "{$this->url}/{$product->id}/buy/$quantity");
         
         $this->responseSuccess($response)
-            ->responseCreatedSuccess($response);
+            ->responseCreatedSuccess($response)
+            ->eventInLog('products.purchased', [
+                'idProduct'=>$product->id,
+                'quantity'=>$quantity
+            ]);
     }
     
 }

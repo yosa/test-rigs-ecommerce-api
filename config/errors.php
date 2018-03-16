@@ -14,4 +14,8 @@ return [
     'a9'=>'El producto no existe',
     'a10'=>'Imposible registrar su comprar, producto agotado',
     'a11'=>'Imposible registrar su comprar, no se pudo actualizar el stock',
+    
+    /* logs */
+    'log.1'=>'Imposible obtener el evento por su clave ({eventKey})',
+    'log.2'=>'Imposible crear registro del evento {eventName} ({eventKey})',
 ];

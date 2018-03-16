@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use App\Models\Logs;
+
 /**
  * 
  *
@@ -9,6 +11,19 @@ namespace Tests;
  */
 trait ResponseTrait
 {
+    
+    public function cleanLogs()
+    {
+        Logs::where('id', '>', 1)->delete();
+    }
+    
+    public function eventInLog($eventKey, array $data = [])
+    {
+        $logModel = app(Logs::class);
+        $log = $logModel->findEventKey($eventKey, $data);
+        $this->assertTrue(isset($log->id));
+        return $this;
+    }
         
     public function responseWithErrors(&$response, $status = 400)
     {
