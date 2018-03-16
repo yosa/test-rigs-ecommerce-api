@@ -12,7 +12,7 @@ class CreateTest extends TestCase
     
     /**
      * @test
-     * @group dev
+     * @group completed
      * @group shopping
      * @group shopping.create
      * @group create

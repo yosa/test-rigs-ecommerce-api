@@ -22,7 +22,9 @@ class CreateShoppingTable extends Migration
             
             $table->foreign('idProduct')
                 ->references('id')
-                ->on('products');
+                ->on('products')
+                /* only delete records in test unit */
+                ->onDelete('cascade');
             $table->foreign('idUserCreated')
                 ->references('id')
                 ->on('users');

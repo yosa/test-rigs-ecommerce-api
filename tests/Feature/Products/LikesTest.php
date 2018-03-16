@@ -28,7 +28,7 @@ class LikesTest extends TestCase
 
     /**
      * @test
-     * @group completed
+     * @group dev
      * @group products
      * @group products.likes
      * @group likes

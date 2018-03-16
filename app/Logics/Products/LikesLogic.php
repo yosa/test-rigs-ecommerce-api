@@ -17,7 +17,7 @@ class LikesLogic extends UpdateLogic
         $result = $this->repository
             ->byId($input['id'])
             ->increment('likes');
-        return $result === false ? false : true;
+        return $result === false ? false : $input['id'];
     }
     
 }

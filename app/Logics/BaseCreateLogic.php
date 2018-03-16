@@ -20,6 +20,7 @@ class BaseCreateLogic
     protected $fieldIdIdentityCreated = 'idUserCreated';
     protected $autoInyectIdentityCreated = true;
     protected $eventSuccess = '';
+    protected $errorCode = '';
 
     public function __construct($repository)
     {        
@@ -92,7 +93,7 @@ class BaseCreateLogic
         $eventData = $this->getRecord($idRecord);
         
         if( !$eventData) {
-            $this->error($this->getStatusError());
+            $this->error($this->getErrorCode());
             $this->repository->getConnection()->rollBack();
             return false;
         }
@@ -134,9 +135,9 @@ class BaseCreateLogic
         return $result;
     }
     
-    public function getStatusError()
+    public function getErrorCode()
     {
-        return $this->statusError;
+        return $this->errorCode;
     }
     
     public function inyectIdIdentityCreated(&$input)
