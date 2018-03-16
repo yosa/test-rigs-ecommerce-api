@@ -32,7 +32,7 @@ class CreateTest extends TestCase
             ->withToken()
             ->json('post', $this->url, $input);
         
-        $this->responseWithErrors($response, 200)
+        $this->responseWithErrors($response, 403)
             ->withErrorCode($response, 'sec.2');
     }
     

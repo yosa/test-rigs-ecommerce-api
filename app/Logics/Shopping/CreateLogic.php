@@ -48,7 +48,7 @@ class CreateLogic extends BaseCreateLogic
             return true;
         }
         
-        return $this->erroCode('a10');
+        return $this->errorCode('a10');
     }
     
     public function save(&$input)

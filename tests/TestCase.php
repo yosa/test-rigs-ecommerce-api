@@ -13,9 +13,24 @@ abstract class TestCase extends BaseTestCase
     use ResponseTrait;
     use DatabaseTransactions;
     
+    public function getClientId()
+    {
+        return env('TEST_CLIENT_ID');
+    }
+    
+    public function getEmail()
+    {
+        return env('TEST_USER_EMAIL');
+    }
+    
+    public function getPassword()
+    {
+        return env('TEST_USER_PASSWORD');
+    }
+    
     public function getUser()
     {
-        return User::where('email', env('TEST_USER_EMAIL'))
+        return User::where('email', $this->getEmail())
             ->first();
     }
     

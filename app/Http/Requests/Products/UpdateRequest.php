@@ -13,11 +13,21 @@ class UpdateRequest extends ApiRequest
 {
     
     protected $errorCode = [
-        'price'=>'a7',
+        'id'=>'a7',
+        'price'=>'a8',
     ];
 
     protected $rules = [
+        'id'=>'required|numeric',
         'price'=>'required|numeric',
     ];
+    
+    protected function validationData()
+    {
+        $this->merge([
+            'id'=>$this->route('id'),
+        ]);
+        return parent::validationData();
+    }
     
 }

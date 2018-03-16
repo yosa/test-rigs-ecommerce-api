@@ -21,7 +21,7 @@ class GatesSecurity
         }
         
         if( !app('gates')->run($gate, $errorCode, true)) {
-            return response()->data(false);
+            return response()->data(false, 403);
         }
         
         return $next($request);        

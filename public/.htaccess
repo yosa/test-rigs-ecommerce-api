@@ -8,6 +8,8 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteCond %{HTTP:client_id} .
+    RewriteRule .* - [E=HTTP_CLIENT_ID:%{HTTP:client_id}]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -18,4 +20,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Headers: "access-control-allow-headers, access-control-allow-methods, access-control-allow-origin, authorization, client_id, client_secret, content-type"
+    Header set Access-Control-Allow-Methods: "PUT, DELETE"
 </IfModule>

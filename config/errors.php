@@ -20,6 +20,7 @@ return [
     'log.2'=>'Imposible crear registro del evento {eventName} ({eventKey})',
     
     /* security */
-    'sec.1'=>'No autenticado',
-    'sec.2'=>'No cuenta con privilegios para realizar la acción ({gate})',
+    'sec.login.1'=>'No autenticado',
+    'sec.login.2'=>'Invalid credentials',
+    'sec.login.3'=>'Invalid client id',
 ];

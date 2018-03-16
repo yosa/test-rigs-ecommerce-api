@@ -11,4 +11,5 @@ Route::prefix('v1')->group(function() {
         Route::put('{id}/buy/{quantity}', 'ShoppingController@create');
         Route::delete('{id}', 'ProductsController@delete');
     });
+    Route::post('security/logout', 'SecurityController@logout');
 });
