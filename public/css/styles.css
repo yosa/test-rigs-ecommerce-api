@@ -1,0 +1,68 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/* changes  */
+.section-products .card-title
+{
+    margin: 0;
+}
+.section-products .stock
+{
+    margin-bottom: 20px;
+    display: block;
+}
+.section-products .like
+{
+    float: right;
+}
+
+.section-products .card-img-top
+{
+    min-height: 180px;
+}
+
+.section-products a:hover .fa-heart,
+.section-products a:hover
+{
+    color: #F44336;
+}
+
+@media (min-width: 576px)
+{
+    .card-columns {
+        column-count: 2;
+        column-gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px)
+{
+    .card-columns {
+        column-count: 3;
+        column-gap: 1.25rem;
+    }
+}
