@@ -18,6 +18,8 @@
         + DB_PASSWORD=123456789
 - Create database
     + Assign privileges to the user to access the database
+- Install dependencies
+    + composer update
 - Run migrations
     + php artisan migrate
-        + If you see, Migration table created successfully. Be happy and continue
+    + If you see, Migration table created successfully. Be happy !!

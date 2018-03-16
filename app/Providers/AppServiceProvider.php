@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Providers\MessagesProvider;
+use App\Providers\ArrayProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton('messages', function() {
+            return new MessagesProvider();
+        });
+        $this->app->singleton('array', function() {
+            return new ArrayProvider();
+        });
     }
 
     /**

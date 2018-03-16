@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,4 +52,47 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+    
+    
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json($exception->errors(), $exception->status);
+    }
+    
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated(
+        $request, 
+        AuthenticationException $exception
+    )
+    {
+        if($request->isJson() || $request->ajax()) {
+            return response()->unauthenticated();
+        }
+        
+        return redirect()->guest('login');
+    }
+    
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        if($request->isJson() || $request->ajax()) {
+            return response()->validationException($e->validator);
+        }
+        
+        return parent::convertValidationExceptionToResponse($e, $request);
+    }
+    
 }
