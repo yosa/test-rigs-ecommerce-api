@@ -7,7 +7,7 @@
 - Application key
     + php artisan key:generate
 - Directory Permissions
-    + chmod 777 bootrap/
+    + chmod 777 bootstrap/
     + chmod 777 -R storage/
 - Test in web browser
     + Navigate to website for example: http://rigs.melisa.mx
