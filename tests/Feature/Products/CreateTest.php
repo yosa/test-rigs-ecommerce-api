@@ -33,7 +33,7 @@ class CreateTest extends TestCase
             ->json('post', $this->url, $input);
         
         $this->responseWithErrors($response, 403)
-            ->withErrorCode($response, 'sec.2');
+            ->withErrorCode($response, 'sec.gate.2');
     }
     
     /**
