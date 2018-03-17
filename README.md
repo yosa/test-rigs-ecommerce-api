@@ -1,4 +1,6 @@
 ## SETUP
+- Clone repository
+    + git clone https://github.com/yosa/test-rigs-ecommerce-api.git rigs
 - Create or move file .env.example
     + Copy
         + cp .env.example .env
@@ -16,12 +18,12 @@
         + DB_PASSWORD=123456789
 - Create database
     + Assign privileges to the user to access the database
+- Run migrations
+    + php artisan migrate
 - Create the encryption keys needed to generate secure access tokens
     + php artisan passport:install
 - Test in web browser
     + Navigate to website for example: https://rigs.melisa.mx
-- Run migrations
-    + php artisan migrate
 - Run seeders
     + php artisan db:seed
         + Create administrator and registered user and fill table catalog of events
