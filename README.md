@@ -31,6 +31,13 @@
 
 ## USE
 
+### Environments
+
+- Server Developer
+    + Url: https://rigs.melisa.mx
+- Server Heroku
+    + Url: https://test-rigs.herokuapp.com
+
 ### View documentation API Postman
 - [View API Postman](https://documenter.getpostman.com/view/2057735/rigs-e-commerce/RVnZfx7A)
 - [Import API Postman](https://www.getpostman.com/collections/ba0229f14b776907301d)
