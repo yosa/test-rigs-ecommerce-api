@@ -22,6 +22,12 @@ class UsersTableSeeder extends Seeder
         User::updateOrCreate([
             'email'=>$emailUser
         ], $userFake);
+        User::updateOrCreate([
+            'email'=>env('TEST_USER_EMAIL_NO_ADMIN')
+        ], [
+            'name'=>'Test no admin',
+            'password'=>bcrypt(env('TEST_USER_PASSWORD_NO_ADMIN'))
+        ]);
     }
     
 }

@@ -72,7 +72,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        $namespace = "$this->namespace\Api\v1";
+        $namespace = $this->namespace . '\Api\v1';
         Route::prefix('api')
              ->middleware('auth:api')
              ->namespace($namespace)

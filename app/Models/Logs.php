@@ -43,4 +43,13 @@ class Logs extends Model
         
         return $query->first();
     }
+    
+    public function withDetail()
+    {
+        return $this->with([
+            'user',
+            'event'
+        ]);
+    }
+    
 }

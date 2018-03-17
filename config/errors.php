@@ -19,8 +19,12 @@ return [
     'log.1'=>'Imposible obtener el evento por su clave ({eventKey})',
     'log.2'=>'Imposible crear registro del evento {eventName} ({eventKey})',
     
-    /* security */
+    /* security login */
     'sec.login.1'=>'No autenticado',
     'sec.login.2'=>'Invalid credentials',
     'sec.login.3'=>'Invalid client id',
+    
+    /* security gates */
+    'sec.gate.1'=>'Not authenticated',
+    'sec.gate.2'=>'You are not authorized to execute the action',
 ];

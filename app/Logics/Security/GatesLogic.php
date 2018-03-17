@@ -22,7 +22,7 @@ class GatesLogic
         $user = $this->getUser();
         
         if( !$user) {
-            return $this->errorCode('sec.1');
+            return $this->errorCode('sec.gate.1');
         }
         
         /* simple test is admin */
@@ -30,7 +30,7 @@ class GatesLogic
             return true;
         }
         
-        return $this->errorCode('sec.2', [
+        return $this->errorCode('sec.gate.2', [
             'gate'=>$gate
         ]);
     }
