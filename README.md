@@ -25,7 +25,7 @@
 - Run seeders
     + php artisan db:seed
         + Create administrator and registered user and fill table catalog of events
-- Run fake product generator
+- Run fake product generator (optional)
     + php artisan fake-products
         +  It generates products with random data and it will be possible to see them from the web site or from the api /api/v1/products
 
