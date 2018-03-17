@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Providers\MessagesProvider;
 use App\Providers\ArrayProvider;
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('gates', function ($app) {         
             return $app->make(GatesLogic::class);            
         });
+        /* run in postgreSQL */
+        Schema::defaultStringLength(191);
     }
 
     /**
