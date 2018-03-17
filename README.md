@@ -19,7 +19,7 @@
 - Create the encryption keys needed to generate secure access tokens
     + php artisan passport:install
 - Test in web browser
-    + Navigate to website for example: http://rigs.melisa.mx
+    + Navigate to website for example: https://rigs.melisa.mx
 - Run migrations
     + php artisan migrate
 - Run seeders
@@ -32,14 +32,14 @@
 ## USE
 
 ### View documentation API Postman
-    + [View API Postman](https://documenter.getpostman.com/view/2057735/rigs-e-commerce/RVnZfx7A)
-    + [Import API Postman](https://www.getpostman.com/collections/ba0229f14b776907301d)
+- [View API Postman](https://documenter.getpostman.com/view/2057735/rigs-e-commerce/RVnZfx7A)
+- [Import API Postman](https://www.getpostman.com/collections/ba0229f14b776907301d)
 
 ### Use API Postman
 - It is necessary to define the following variables in an environment
 
 ```
-server:http://rigs.dev.melisa.mx/
+server:https://rigs.melisa.mx/
 apiVersion:v1/
 apiSegment:api/
 email:lheredia@melisa.mx
@@ -48,7 +48,7 @@ token:your_token
 ```
 
 ### Run endpoints from postman
-- Run the endpoint located in the security / login / success folder
+- Run the endpoint located in the security/login/success folder
     +  If the credentials are incorrect, the following json returns:
 
 ```
@@ -57,24 +57,23 @@ token:your_token
     "info": [],
     "debug": [],
     "success": true,
-    "benchmark": "2.85MB",
+    "benchmark": "3.19MB",
     "data": {
-        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImMyNDNiNmYxMTQzY2I2YTA1ZTczZmE3MTA0NTUyMjE0NjY0NWUyZjIyNjQ5MGE2NzI5N2Q5MTVjZGQ1MzdjMTRiMjE5YjQzYjNiYzExMTNkIn0.eyJhdWQiOiIyIiwianRpIjoiYzI0M2I2ZjExNDNjYjZhMDVlNzNmYTcxMDQ1NTIyMTQ2NjQ1ZTJmMjI2NDkwYTY3Mjk3ZDkxNWNkZDUzN2MxNGIyMTliNDNiM2JjMTExM2QiLCJpYXQiOjE1MjEyNDY1NjQsIm5iZiI6MTUyMTI0NjU2NCwiZXhwIjoxNTIyNTQyNTY0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.owfSiXwojLBl3-NqB94nQ1bWd6UDq80-49ySfzhkLuQhiQOQmNzcitw0ABDEG1dfFK1bFfg5RBpXG-EIZMKZBnk7gWuJhK-dJKHLRXur6bnaypqGZqK0CVzTa5u_11TkIF0DAbEPJI_eQYiOusEvxp0q84QHzEnOWffV6SgY2CArAqbkEbvdzlKgj_AM6inYXvmvIv2omcmN4983TcCoHsEnDknQkK-uJM8dcmHG_oGrikQrHokv81HxYgA94p7jsuQCrDrnG6TMr8X1DOeJKxIIsjMCTXsbsFxXa5HM7e_uBCLMlHh2cNAzfBNIC65PxDgheJUfcByPD8Gbimm6x5Wx7ezQscZM6SPN0TyE7bvnSMm2loJTsdknFe3KqlqSQq1TntBV2DkrZEwovvsOFEaz1eVWnoR1bQQyFPi5KaUDFvnkBM9y0KxtDdblzjpr0zVXUOQ2haN3P2h80TVCp2EiA1lvOmKKj6RDeJDqP5LtlpD7T96ZkKWOPxVyIaM33tHABm_iKWGn0BSUj995jEo3xdyvC99okdSRliNlS1piAN7Pzu7gcezYPbdYl3KS2Vf-ng7PFvNXcMoxY5gJVEahFXQs1Izc_ye_zdCPRmsAAc64TgLbI4faGfcJgKRi0waqTJEswDpNfknYI6c3gv0dnEhySWbSNwSnw3_-lUY",
-        "expires_in": 1296000,
-        "refresh_token": "def502006c89f6b9f27fd88802557645f5e5e02e59c2265fdc706afc85a01d51acce356973c5b64eb3c3cf99c9eae780437d60b6f9d15e70a97cbf2971ed617b2071fa6c7f334d124dce3644fc14d80f7da15e6509f8b63de62be258009783f1f3c8a3ea7edbe4b141d74911dd52e2e14124e7bf1e9d67617e6484bcbbecde488f672c4a57dea65c5cc869db7a4d8742ae2c79bdd014d68ca4b12699c5bf766a758d092d4be65ba2c6137696f3e8b467415b7fe6398f5218934fe100339c9bc7058b2dabf0410f8bc84c603b4763488f32466faf11e3b23e7660138433e5ee4192eb2e604cc0071cb0ad36d1aa6ee984b06c29054f78ddabb6ae5941da6af9923efe8d269860a0b523ee945f4490b50de15703fd2a872d89ed50aa371a506ca624431aa9ea89ad45e3d360a4565b14a26bcc8fd4b334a2a635ba5479bcdc1a3ec1ab654e3da04fe68717b232d66d47b12a5e5269a73a86e0786025230df7715541",
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImIyZjEyMTUwZDUwY2RhYmE5Nzg2ZTE3ODJmYjMzNDc2Zjc5NThhOWE3MzEzOGUzN2UwN2U3MzUyZmU1NTcwMTJiNzAzYzJmZmQ3NjQzMTc2In0.eyJhdWQiOiIyIiwianRpIjoiYjJmMTIxNTBkNTBjZGFiYTk3ODZlMTc4MmZiMzM0NzZmNzk1OGE5YTczMTM4ZTM3ZTA3ZTczNTJmZTU1NzAxMmI3MDNjMmZmZDc2NDMxNzYiLCJpYXQiOjE1MjEyNDc2ODMsIm5iZiI6MTUyMTI0NzY4MywiZXhwIjoxNTIyNTQzNjgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.zGSAYDk24JKHqySLYIrJPvOWoEgXZLwYjhnYIC6kGE8kzWwFWJxTjVrfFrVd9vw7fBs07hwELNlAOnvQt6rm9-UvC4aGHfZHK7O1wxSwlHpXkZ5L1uHNDbQ-J5ixP_dY1-OdIurpuOVWi8drdgILnkd-OVWXXJzlQfrmB5YqQFnQjVeLMDJfyMfmtwzS1A0XHu_OboxAT_HnJCn_icjR6cCp18Tku_hJWouI_BJe_x3eZ3AwUZtnHAIKUrraVvbXAT0RCEUo3bdaO7y0x0K_ncyDraeqTwdERXu8zoYf8xt63u_whkCxlDMk4Ep7iUS36EBMw9Nb__Z3foSLqMpobkdGktV04xAcDI20tCXcOuENX8BqfIj-fDVkXULnIlXfkn8tgztqAjDh6__RqltoW5HmfN0RsKJihuZ1WEij9X9PUVSM2KdOKQQzrxfjGiEc_ipbewXnvuDRPZ04olzSQfzLicx8L3W91hoxTaXVSMY0W2Ot_cE-Cr9E1z4OIt_UlME5K_B_XzlD0mjiZfY2ksJTdX7T0FmMrTbe-zpBaSYdI6oHu3kpcvVN-QhoX7ME0uNuzsyN-s1NFfOEGiNmpBRnbP9R-Q_KReasdbV_PrL-PvyRB0hFvOWyzjDU_pMfP7aWohhLHzSYY5WPYTjg1ixDzlUL32hpxFPxDszZLfw",
+        "expires_in": 1295999,
+        "refresh_token": "def5020089cb4c49e366e828a39361199a9c7ff8ce9b2b837a0a691a9c06bbb539c152055ab7ddf164b4c53e8c5e0b41124e7b4ea8faaeb086136039ef9804aec7b59bf30e975b7d416b063cee5858725a343e8144842ffb1f17646d8acaaa8679a084b4b0a9909ab134bf4be45f9363e5a0fc2b4ed1b8f8b36fdb45d91b2830d371851be8111fc40d3c391ce6a69c1d145090b3eab8f250fb852793b1bb85847036af943f5ff107752a50dd40941f89082e8aab0aeb44dda2987b4f28089d8a38ef5d3942d972cefbd011c7f6631a933020cda472eb61c2109207e09bf7ff744b82ff4a6ad78427cce46bebc5fdfdd90063c924ea1562fa62921f201922a5f7c5710ec50f0c899099febc20471331d56957ce39ec8583e6d5abd7454a6c26ebf2b2abdbc0bfbe5daf549424024b221caf92a8263d713ca983fa6dc259a05eaaebecb42b5da27d14db272aaaeac5c018c39b24623bbeb65d99faf8e18c633c01e0",
         "user": {
             "id": 1,
-            "name": "Seamus Grady",
+            "name": "D'angelo Hilll Jr.",
             "email": "lheredia@melisa.mx",
-            "isAdmin": 1,
-            "created_at": "2018-03-16 17:51:50",
-            "updated_at": "2018-03-16 18:11:27"
+            "created_at": "2018-03-16 17:38:02",
+            "updated_at": "2018-03-16 17:38:02"
         }
     }
 }
 ```
 
-- In order to execute the other privileged endpoints it is necessary to copy the ** access_token ** in the token environment variable.
+- In order to execute the other privileged endpoints it is necessary to copy the **access_token** in the token environment variable.
 
 ### Running unit tests
 - Execute all unit tests
