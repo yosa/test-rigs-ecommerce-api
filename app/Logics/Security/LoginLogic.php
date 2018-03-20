@@ -2,6 +2,7 @@
 
 namespace App\Logics\Security;
 
+use GuzzleHttp\Client;
 use App\Models\User;
 use App\Models\OAuthClients;
 use App\Logics\LogicBusiness;
@@ -27,10 +28,6 @@ class LoginLogic
     {
         $this->repoUsers = $repoUser;
         $this->repoOauthClients = $repoOauthClients;
-        
-        $app = app();
-        $this->cookie = $app->make('cookie');
-        $this->apiConsumer = $app->make('apiconsumer');
     }
     
     public function run(array $input)
@@ -78,24 +75,20 @@ class LoginLogic
             'grant_type'=>$grantType
         ]);
         
+        $client = new Client([
+            'base_uri'=>env('APP_URL') . '/oauth/token'
+        ]);
+        
         $response = $this->apiConsumer->post('/oauth/token', $params);
         
-        if ( !$response->isSuccessful()) {
+        if ( $response->getStatusCode() !== 200) {
             return $this->errorCode('sec.login.2');
         }
         
-        $result = json_decode($response->getContent());
-        
-        // Create a refresh token cookie
-        $this->cookie->queue(
-            'refreshToken',
-            $result->refresh_token,
-            864000,// 10 days
-            null,
-            null,
-            false,
-            true// HttpOnly
-        );
+        $result = json_decode($response->getBody()->getContents());
+        if ( is_null($result) || !isset($result->access_token)) {
+            return $this->errorCode('sec.login.2');
+        }
         
         return [
             'access_token'=>$result->access_token,
