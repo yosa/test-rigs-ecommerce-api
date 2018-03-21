@@ -65,20 +65,16 @@ class LoginLogic
     }
     
     public function proxyLogin($grantType, $user, $client, $password)
-    {
-        $params = array_merge([
-            'username'=>$user->email,
-            'password'=>$password,
-        ], [
-            
-        ]);
-        
-        $client = new Client([
+    {        
+        $api = new Client([
             'base_uri'=>env('APP_URL')
         ]);
         
-        $response = $client->post('/oauth/token', [
-            'json'=>$params,
+        $response = $api->post('/oauth/token', [
+            'json'=>[
+                'username'=>$user->email,
+                'password'=>$password,
+            ],
             'headers'=>[
                 'client_id'=>$client->id,
                 'client_secret'=>$client->secret,
