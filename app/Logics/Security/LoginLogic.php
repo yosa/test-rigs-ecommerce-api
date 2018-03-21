@@ -3,6 +3,7 @@
 namespace App\Logics\Security;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use App\Models\User;
 use App\Models\OAuthClients;
 use App\Logics\LogicBusiness;
@@ -70,17 +71,19 @@ class LoginLogic
             'base_uri'=>env('APP_URL')
         ]);
         
-        $response = $api->post('/oauth/token', [
-            'json'=>[
-                'username'=>$user->email,
-                'password'=>$password,
-            ],
-            'headers'=>[
-                'client_id'=>$client->id,
-                'client_secret'=>$client->secret,
-                'grant_type'=>$grantType
-            ]
-        ]);
+        try {
+            $response = $api->post('/oauth/token', [
+                'form_params'=>[
+                    'username'=>$user->email,
+                    'password'=>$password,
+                    'client_id'=>$client->id,
+                    'client_secret'=>$client->secret,
+                    'grant_type'=>$grantType
+                ],
+            ]);
+        } catch (RequestException $ex) {
+            $response = $ex->getMessage();
+        }
         dd($response);
         if ( $response->getStatusCode() !== 200) {
             return $this->errorCode('sec.login.2');
