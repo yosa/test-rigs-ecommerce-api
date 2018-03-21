@@ -70,7 +70,15 @@ class LoginLogic
         $api = new Client([
             'base_uri'=>env('APP_URL')
         ]);
-        
+//        dd([
+//                'form_params'=>[
+//                    'username'=>$user->email,
+//                    'password'=>$password,
+//                    'client_id'=>$client->id,
+//                    'client_secret'=>$client->secret,
+//                    'grant_type'=>$grantType
+//                ],
+//            ]);
         try {
             $response = $api->post('/oauth/token', [
                 'form_params'=>[
