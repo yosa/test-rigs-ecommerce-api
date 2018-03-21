@@ -31,7 +31,7 @@ class LoginLogic
     }
     
     public function run(array $input)
-    {
+    {dd($input);
         $user = $this->getUser($input['email']);
         
         if( !$user) {
