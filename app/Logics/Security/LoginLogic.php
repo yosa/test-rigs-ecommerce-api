@@ -70,15 +70,7 @@ class LoginLogic
         $api = new Client([
             'base_uri'=>env('APP_URL')
         ]);
-//        dd([
-//                'form_params'=>[
-//                    'username'=>$user->email,
-//                    'password'=>$password,
-//                    'client_id'=>$client->id,
-//                    'client_secret'=>$client->secret,
-//                    'grant_type'=>$grantType
-//                ],
-//            ]);
+        
         try {
             $response = $api->post('/oauth/token', [
                 'form_params'=>[
@@ -92,7 +84,7 @@ class LoginLogic
         } catch (RequestException $ex) {
             $response = $ex->getMessage();
         }
-        dd($response);
+        
         if ( $response->getStatusCode() !== 200) {
             return $this->errorCode('sec.login.2');
         }
