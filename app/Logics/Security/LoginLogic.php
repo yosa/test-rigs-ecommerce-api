@@ -82,7 +82,7 @@ class LoginLogic
         $response = $client->post('/oauth/token', [
             'form_params'=>$params
         ]);
-        
+        dd($response);
         if ( $response->getStatusCode() !== 200) {
             return $this->errorCode('sec.login.2');
         }
