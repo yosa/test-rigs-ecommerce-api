@@ -76,10 +76,12 @@ class LoginLogic
         ]);
         
         $client = new Client([
-            'base_uri'=>env('APP_URL') . '/oauth/token'
+            'base_uri'=>env('APP_URL')
         ]);
         
-        $response = $this->apiConsumer->post('/oauth/token', $params);
+        $response = $client->post('/oauth/token', [
+            'form_params'=>$params
+        ]);
         
         if ( $response->getStatusCode() !== 200) {
             return $this->errorCode('sec.login.2');
