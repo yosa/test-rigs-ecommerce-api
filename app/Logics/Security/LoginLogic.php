@@ -31,7 +31,7 @@ class LoginLogic
     }
     
     public function run(array $input)
-    {dd($input);
+    {
         $user = $this->getUser($input['email']);
         
         if( !$user) {
@@ -70,9 +70,7 @@ class LoginLogic
             'username'=>$user->email,
             'password'=>$password,
         ], [
-            'client_id'=>$client->id,
-            'client_secret'=>$client->secret,
-            'grant_type'=>$grantType
+            
         ]);
         
         $client = new Client([
@@ -80,7 +78,12 @@ class LoginLogic
         ]);
         
         $response = $client->post('/oauth/token', [
-            'form_params'=>$params
+            'json'=>$params,
+            'headers'=>[
+                'client_id'=>$client->id,
+                'client_secret'=>$client->secret,
+                'grant_type'=>$grantType
+            ]
         ]);
         dd($response);
         if ( $response->getStatusCode() !== 200) {
